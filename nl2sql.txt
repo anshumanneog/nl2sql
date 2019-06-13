@@ -1,0 +1,36 @@
+NL2SQL files:
+- model.py - contains the model architecture.
+- dataloader.py - contains the data transformer which transforms the text data into tensors which is to be feed into
+the model.
+- predictor.py - contains the code converting the model output into SQL code.
+- eval_utils.py - contains the evaluation function for testing out the model.
+
+
+Model Architecture:
+- Please refer to the paper https://arxiv.org/abs/1809.05054.
+- Only thing that's different is the current model uses the same LSTM cells for encoding both columns and questions.
+    = using the same LSTM makes sure that same meaning/semantic feature is extracted for both column and question.
+    = this will be effective when we use the dot product for finding the similarity.
+
+Modeling Code flow in model.py:
+- 3 extension of `nn.Module`
+    = Encoder
+        - Encodes the question and the columns into a vector space.
+    = Decoder
+        - Scores the various states in a sequential manner.
+    = NL2SQL
+        - Combines both the encoder and decoder model.
+
+
+To prepare data:
+- open dataprep.ipynb notebook.
+- run the DataTransformer model in the notebook in the sequence it's given.
+- save the transformed
+To train a model:
+- train.ipynb notebook
+-
+
+
+
+
+
